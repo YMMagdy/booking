@@ -4,7 +4,7 @@ import com.serivce.booking_service.controllers.model.Requests.CreateBookingReque
 import com.serivce.booking_service.model.Booking;
 import org.mapstruct.Mapper;
 
-@Mapper
-public interface CreateBookingToBookingModel {
+@Mapper(componentModel = "spring")
+public interface BookingMapper {
     Booking createBookingToBookingModel(CreateBookingRequest createBookingRequest);
 }
