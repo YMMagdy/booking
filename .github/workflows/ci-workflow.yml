@@ -95,7 +95,23 @@ jobs:
 
   Deploy:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
-      - name: Test deploy
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'v1.33.1'
+        id: install
+#      - name: "Configure AWS Credentials" Action for GitHub Actions
+#        uses: aws-actions/configure-aws-credentials@v4.2.1
+#        with:
+#          aws-region: ${{secrets.AWS_REGION}}
+#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#      - name: Update KubeConfig
+#        run: aws eks update-kubeconfig --name ${{secrets.CLUSTER_NAME}} --region ${{secrets.AWS_REGION}}
+      - name: Edit deployment.yaml file
         run: |
-          echo "This is a test deploy"
+          echo "use yq to update deployment file (Does not exist yet)"
