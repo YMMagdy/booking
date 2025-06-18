@@ -97,6 +97,7 @@ jobs:
 
   Deploy:
     runs-on: ubuntu-latest
+    needs: build_and_push
     permissions:
       id-token: write
       contents: read
@@ -116,4 +117,4 @@ jobs:
 #        run: aws eks update-kubeconfig --name ${{secrets.CLUSTER_NAME}} --region ${{secrets.AWS_REGION}}
       - name: Edit deployment.yaml file
         run: |
-          echo "use yq to update deployment file (Does not exist yet)"
+          echo "use yq to update version ${{jobs.build_and_push.outputs.build_tag}} deployment file (Does not exist yet)"
