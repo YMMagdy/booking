@@ -91,7 +91,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ steps.latest_tag.outputs.tag }}
+          tags: ${{secrets.DOCKER_USERNAME}}/booking_service:${{ steps.latest_tag.outputs.tag }}
 
   Deploy:
     runs-on: ubuntu-latest
